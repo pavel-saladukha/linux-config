@@ -1,0 +1,25 @@
+# google_drive_private: aliases
+alias mount-read-gdp='rclone mount google_drive_private: ${HOME}/cloud_mounts/google_drive_private/ --no-modtime --read-only --vfs-cache-mode full --daemon'
+alias mount-full-gdp='rclone mount google_drive_private: ${HOME}/cloud_mounts/google_drive_private/ --no-modtime --vfs-cache-mode full --daemon'
+alias unmount-gdp='fusermount -u ${HOME}/cloud_mounts/google_drive_private'
+alias serve-gdp='rclone serve http google_drive_private: --no-modtime --read-only --vfs-cache-mode full'
+# dropbox_private: aliases
+alias mount-read-dbp='rclone mount dropbox_private: ${HOME}/cloud_mounts/dropbox_private/ --no-modtime --read-only --vfs-cache-mode full --daemon'
+alias mount-full-dbp='rclone mount dropbox_private: ${HOME}/cloud_mounts/dropbox_private/ --no-modtime --vfs-cache-mode full --daemon'
+alias unmount-dbp='fusermount -u ${HOME}/cloud_mounts/dropbox_private'
+alias serve-dbp='rclone serve http dropbox_private: --no-modtime --read-only --vfs-cache-mode full'
+# onedrive_official: aliases
+alias mount-read-odo='rclone mount onedrive_official: ${HOME}/cloud_mounts/onedrive_official/ --no-modtime --read-only --vfs-cache-mode full --daemon'
+alias mount-full-odo='rclone mount onedrive_official: ${HOME}/cloud_mounts/onedrive_official/ --no-modtime --vfs-cache-mode full --daemon'
+alias unmount-odo='fusermount -u ${HOME}/cloud_mounts/onedrive_official'
+alias serve-odo='rclone serve http onedrive_official: --no-modtime --read-only --vfs-cache-mode full'
+# onedrive_private: aliases
+alias mount-read-odp='rclone mount onedrive_private: ${HOME}/cloud_mounts/onedrive_private/ --no-modtime --read-only --vfs-cache-mode full --daemon'
+alias mount-full-odp='rclone mount onedrive_private: ${HOME}/cloud_mounts/onedrive_private/ --no-modtime --vfs-cache-mode full --daemon'
+alias unmount-odp='fusermount -u ${HOME}/cloud_mounts/onedrive_private'
+alias serve-odp='rclone serve http onedrive_private: --no-modtime --read-only --vfs-cache-mode full'
+# yandex_official: aliases
+alias mount-read-ydo='rclone mount yandex_official: ${HOME}/cloud_mounts/yandex_official/ --no-modtime --read-only --vfs-cache-mode full --daemon'
+alias mount-full-ydo='rclone mount yandex_official: ${HOME}/cloud_mounts/yandex_official/ --no-modtime --vfs-cache-mode full --daemon'
+alias unmount-ydo='fusermount -u ${HOME}/cloud_mounts/yandex_official'
+alias serve-ydo='rclone serve http yandex_official: --no-modtime --read-only --vfs-cache-mode full'

@@ -1,0 +1,6 @@
+alias tfinit="terraform init"
+alias tffmt="terraform fmt"
+alias tfplan="terraform plan"
+alias tfaplf="terraform apply -auto-approve"
+alias tfdesf="terraform destroy -auto-approve"
+alias tfrecreate="terraform destroy -auto-approve && terraform apply -auto-approve"

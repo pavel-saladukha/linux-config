@@ -1,0 +1,9 @@
+alias repos-update='sudo dnf check-update && sudo dnf update -y && sudo dnf autoremove -y && flatpak update -y && flatpak uninstall --unused && rclone selfupdate'
+alias repos-clean='sudo dnf autoremove -y && flatpak update -y && flatpak uninstall --unused'
+alias la='ls -la'
+
+alias fls='flatpak search'
+alias fll='flatpak list'
+
+alias dnfs="dnf search"
+alias dnfli="dnf list --installed"
