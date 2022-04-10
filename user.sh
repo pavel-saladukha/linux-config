@@ -39,6 +39,12 @@ cp -R bash_aliases.d/* ${HOME}/.bash.d/
 
 git config --global core.editor "subl -n -w"
 
+git clone https://github.com/AdnanHodzic/auto-cpufreq.git
+cd auto-cpufreq 
+sudo ./auto-cpufreq-installer
+cd ../
+rm -rf auto-cpufreq
+
 #install extensions
 mkdir -p $(pwd)/ge
 cd ge
@@ -53,4 +59,4 @@ for gef in ./*; do
 	gnome-extensions install "${gef}" -f || true
 done
 cd ../
-rm -rf $(pwd)/ge
+rm -rf ge

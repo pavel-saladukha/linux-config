@@ -35,7 +35,9 @@ dnf install -y \
 	alacritty \
 	dnf-plugins-core \
 	rclone \
-	rclone-browser
+	rclone-browser \
+	evolution \
+	evolution-ews
 	
 #Python3
 dnf install -y \
@@ -103,7 +105,8 @@ flatpak install flathub -y \
 	org.libreoffice.LibreOffice \
 	org.qbittorrent.qBittorrent \
 	org.gnome.DejaDup \
-	com.calibre_ebook.calibre
+	com.calibre_ebook.calibre \
+	md.obsidian.Obsidian
 
 flatpak install flathub -y \
 	com.mattjakeman.ExtensionManager \
@@ -115,7 +118,6 @@ flatpak install flathub -y \
 	org.gnome.GTG
 
 flatpak install flathub -y \
-	org.mozilla.Thunderbird \
 	com.google.Chrome \
 	org.chromium.Chromium
 
@@ -124,7 +126,6 @@ flatpak install flathub -y \
 	com.viber.Viber \
 	org.telegram.desktop
 
-# flatpak install flathub com.ulduzsoft.Birdtray
 # flatpak install flathub -y \
 # 	org.texstudio.TeXstudio
 
