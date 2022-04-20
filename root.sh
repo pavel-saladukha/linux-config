@@ -106,16 +106,13 @@ flatpak install flathub -y \
 	org.qbittorrent.qBittorrent \
 	org.gnome.DejaDup \
 	com.calibre_ebook.calibre \
-	md.obsidian.Obsidian
-
+	fr.free.Homebank \
+	net.cozic.joplin_desktop
+	
 flatpak install flathub -y \
 	com.mattjakeman.ExtensionManager \
 	fr.romainvigier.MetadataCleaner \
 	org.gustavoperedo.FontDownloader
-
-flatpak install flathub -y \
-	com.todoist.Todoist \
-	org.gnome.GTG
 
 flatpak install flathub -y \
 	com.google.Chrome \
