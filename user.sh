@@ -33,15 +33,14 @@ mv ${HOME}/Soft/jetbrains-toolbox-1.23.11680 ${HOME}/Soft/jetbrains-toolbox
 rm -f jetbrains-toolbox-1.23.11680.tar.gz
 
 cp ./.vimrc ${HOME}/.vimrc
-mkdir -p ${HOME}/.bash.d
-cd bash_aliases.d
-cp -R bash_aliases.d/* ${HOME}/.bash.d/
+mkdir -p ${HOME}/.bashrc.d
+cp -R bash_aliases.d/* ${HOME}/.bashrc.d/
 
 git config --global core.editor "subl -n -w"
 
 git clone https://github.com/AdnanHodzic/auto-cpufreq.git
 cd auto-cpufreq 
-sudo ./auto-cpufreq-installer
+echo i | sudo ./auto-cpufreq-installer
 cd ../
 rm -rf auto-cpufreq
 
