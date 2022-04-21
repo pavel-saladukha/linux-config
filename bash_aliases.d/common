@@ -1,5 +1,5 @@
-alias repos-update='sudo dnf check-update && sudo dnf update -y && sudo dnf autoremove -y && flatpak update -y && flatpak uninstall --unused && rclone selfupdate'
-alias repos-clean='sudo dnf autoremove -y && flatpak update -y && flatpak uninstall --unused'
+alias repos-update='sudo dnf check-update && sudo dnf update -y && flatpak update -y && rclone selfupdate'
+alias repos-clean='sudo dnf autoremove -y && flatpak uninstall --unused'
 alias la='ls -la'
 
 alias fls='flatpak search'

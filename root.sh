@@ -1,7 +1,15 @@
 #!/bin/bash
 
-#Remove everything unused
+cp -f dnf.conf /etc/dnf/dnf.conf
 
+#RPM Fusion
+dnf install -y \
+  https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
+dnf install -y \
+  https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+dnf group update core -y
+
+#Remove everything unused
 dnf remove @libreoffice -y
 dnf group remove libreoffice -y
 
@@ -43,6 +51,17 @@ dnf install -y \
 dnf install -y \
 	python3-virtualenv \
 	python3-pip
+
+#Codecs
+dnf install -y \
+	gstreamer1-plugins-{bad-\*,good-\*,base} \
+	gstreamer1-plugin-openh264 \
+	gstreamer1-libav \
+	lame\* \
+	--exclude=gstreamer1-plugins-bad-free-devel \
+	--exclude=lame-devel
+dnf group upgrade --with-optional -y \
+	Multimedia
 
 #Virtualization
 dnf group install --with-optional -y \
@@ -108,7 +127,7 @@ flatpak install flathub -y \
 	com.calibre_ebook.calibre \
 	fr.free.Homebank \
 	net.cozic.joplin_desktop
-	
+
 flatpak install flathub -y \
 	com.mattjakeman.ExtensionManager \
 	fr.romainvigier.MetadataCleaner \
