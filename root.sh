@@ -45,7 +45,10 @@ dnf install -y \
 	rclone \
 	rclone-browser \
 	evolution \
-	evolution-ews
+	evolution-ews \
+	gnome-tweaks \
+	blueman \
+	helm
 	
 #Python3
 dnf install -y \
@@ -125,19 +128,15 @@ flatpak install flathub -y \
 	org.qbittorrent.qBittorrent \
 	org.gnome.DejaDup \
 	com.calibre_ebook.calibre \
+	com.github.johnfactotum.Foliate \
 	fr.free.Homebank \
-	net.cozic.joplin_desktop
-
-flatpak install flathub -y \
+	net.cozic.joplin_desktop \
+	com.github.tchx84.Flatseal \
 	com.mattjakeman.ExtensionManager \
 	fr.romainvigier.MetadataCleaner \
-	org.gustavoperedo.FontDownloader
-
-flatpak install flathub -y \
+	org.gustavoperedo.FontDownloader \
 	com.google.Chrome \
-	org.chromium.Chromium
-
-flatpak install flathub -y \
+	org.chromium.Chromium \
 	com.skype.Client \
 	com.viber.Viber \
 	org.telegram.desktop

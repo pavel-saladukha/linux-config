@@ -44,6 +44,8 @@ echo i | sudo ./auto-cpufreq-installer
 cd ../
 rm -rf auto-cpufreq
 
+pip install system-monitoring-center
+
 #install extensions
 mkdir -p $(pwd)/ge
 cd ge

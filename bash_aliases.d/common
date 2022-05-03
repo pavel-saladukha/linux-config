@@ -1,9 +1,11 @@
-alias repos-update='sudo dnf check-update && sudo dnf update -y && flatpak update -y && rclone selfupdate'
+alias repos-update='sudo dnf check-update && sudo dnf update -y && flatpak update -y && sudo rclone selfupdate && pip install --upgrade system-monitoring-center'
 alias repos-clean='sudo dnf autoremove -y && flatpak uninstall --unused'
 alias la='ls -la'
 
+alias fli='flatpak install'
 alias fls='flatpak search'
 alias fll='flatpak list'
 
+alias dnfi="dnf install"
 alias dnfs="dnf search"
 alias dnfli="dnf list --installed"
