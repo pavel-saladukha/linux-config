@@ -38,11 +38,11 @@ cp -R bash_aliases.d/* ${HOME}/.bashrc.d/
 
 git config --global core.editor "subl -n -w"
 
-git clone https://github.com/AdnanHodzic/auto-cpufreq.git
-cd auto-cpufreq 
-echo i | sudo ./auto-cpufreq-installer
-cd ../
-rm -rf auto-cpufreq
+# git clone https://github.com/AdnanHodzic/auto-cpufreq.git
+# cd auto-cpufreq 
+# echo i | sudo ./auto-cpufreq-installer
+# cd ../
+# rm -rf auto-cpufreq
 
 pip install system-monitoring-center
 
