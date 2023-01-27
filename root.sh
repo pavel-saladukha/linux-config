@@ -39,8 +39,10 @@ dnf install -y \
 	stress \
 	stacer \
 	sysprof \
+	lm_sensors \
+	xsensors \
 	thinkfan \
-	alacritty \
+	kitty \
 	dnf-plugins-core \
 	rclone \
 	rclone-browser \
@@ -76,11 +78,24 @@ service libvirtd.service enable
 service libvirtd.service start
 
 #Terraform
-# dnf config-manager --add-repo https://rpm.releases.hashicorp.com/fedora/hashicorp.repo
-# dnf install -y \
-# 	terraform
+dnf config-manager --add-repo https://rpm.releases.hashicorp.com/fedora/hashicorp.repo
+dnf install -y \
+	terraform
 
-cat <<EOF | tee /etc/yum.repos.d/kubernetes.repo
+#VSCodium
+tee -a /etc/yum.repos.d/vscodium.repo << 'EOF'
+[gitlab.com_paulcarroty_vscodium_repo]
+name=gitlab.com_paulcarroty_vscodium_repo
+baseurl=https://paulcarroty.gitlab.io/vscodium-deb-rpm-repo/rpms/
+enabled=1
+gpgcheck=1
+repo_gpgcheck=1
+gpgkey=https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg
+metadata_expire=1h
+EOF
+dnf install codium codium-insiders -y
+
+tee -a /etc/yum.repos.d/kubernetes.repo << 'EOF'
 [kubernetes]
 name=Kubernetes
 baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
@@ -95,6 +110,10 @@ dnf install -y \
 curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-latest.x86_64.rpm
 rpm -Uvh minikube-latest.x86_64.rpm
 rm -f minikube-latest.x86_64.rpm
+
+wget https://github.com/TheAssassin/AppImageLauncher/releases/download/v2.2.0/appimagelauncher-2.2.0-travis995.0f91801.x86_64.rpm -O appimagelauncher.rpm
+rpm -Uvh appimagelauncher.rpm
+rm -f appimagelauncher.rpm
 
 wget https://github.com/apptainer/apptainer/releases/download/v1.0.1/apptainer-1.0.1-1.x86_64.rpm
 rpm -Uvh apptainer-1.0.1-1.x86_64.rpm
@@ -116,32 +135,41 @@ flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flat
 flatpak update -y
 
 flatpak install flathub -y \
+	com.calibre_ebook.calibre \
+	com.dangeredwolf.ModernDeck \
+	com.github.johnfactotum.Foliate \
 	com.github.maoschanz.drawing \
-	org.gimp.GIMP \
+	com.github.tchx84.Flatseal \
+	com.google.Chrome \
+	com.mattjakeman.ExtensionManager \
 	com.rafaelmardojai.Blanket \
-	de.haeckerfelix.Shortwave \
-	org.flameshot.Flameshot \
+	com.skype.Client \
+	com.usebottles.bottles \
+	com.valvesoftware.Steam \
+	com.viber.Viber \
+	fr.free.Homebank \
+	fr.romainvigier.MetadataCleaner \
 	io.github.seadve.Kooha \
 	io.github.seadve.Mousai \
-	org.videolan.VLC \
-	org.libreoffice.LibreOffice \
-	org.qbittorrent.qBittorrent \
-	org.gnome.DejaDup \
-	com.calibre_ebook.calibre \
-	com.github.johnfactotum.Foliate \
-	fr.free.Homebank \
 	net.cozic.joplin_desktop \
-	com.github.tchx84.Flatseal \
-	com.mattjakeman.ExtensionManager \
-	fr.romainvigier.MetadataCleaner \
-	org.gustavoperedo.FontDownloader \
-	com.google.Chrome \
+	net.lutris.Lutris \
+	org.audacityteam.Audacity \
 	org.chromium.Chromium \
-	com.skype.Client \
-	com.viber.Viber \
-	org.telegram.desktop
-
-# flatpak install flathub -y \
-# 	org.texstudio.TeXstudio
+	org.flameshot.Flameshot \
+	org.gimp.GIMP \
+	org.gnome.Boxes \
+	org.gnome.DejaDup \
+	org.gnome.Extensions \
+	org.gnome.PowerStats \
+	org.gramps_project.Gramps \
+	org.gustavoperedo.FontDownloader \
+	org.kde.tokodon \
+	org.libreoffice.LibreOffice \
+	org.linux_hardware.hw-probe \
+	org.nickvision.money \
+	org.qbittorrent.qBittorrent \
+	org.telegram.desktop \
+	org.videolan.VLC \
+	re.sonny.Tangram
 
 flatpak update -y

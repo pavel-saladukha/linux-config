@@ -1,5 +1,17 @@
 #!/bin/bash
 
+mkdir -P ${HOME}/Soft
+
+tee -a ${HOME}/.config/appimagelauncher.cfg << 'EOF'
+[AppImageLauncher]
+destination = ~/Soft
+enable_daemon = true
+EOF
+
+wget https://github.com/balena-io/etcher/releases/download/v1.14.3/balenaEtcher-1.14.3-x64.AppImage -O ${HOME}/Soft/balenaEtcher-1.14.3-x64.AppImage
+wget https://github.com/bitwarden/clients/releases/download/desktop-v2023.1.1/Bitwarden-2023.1.1-x86_64.AppImage -O ${HOME}/Soft/bitwarden.AppImage
+wget https://github.com/TheTumultuousUnicornOfDarkness/CPU-X/releases/download/v4.5.2/CPU-X-v4.5.2-x86_64.AppImage -O ${HOME}/Soft/CPU-X.AppImage
+
 mkdir -p ${HOME}/Soft/{java17,java11,java8,maven,gradle,groovy}
 
 #Ansible
@@ -61,3 +73,10 @@ for gef in ./*; do
 done
 cd ../
 rm -rf ge
+
+#create folders to mount cloud storage
+mkdir ${HOME}/cloud_mounts/dropbox_private
+mkdir ${HOME}/cloud_mounts/google_drive_private
+mkdir ${HOME}/cloud_mounts/onedrive_official
+mkdir ${HOME}/cloud_mounts/onedrive_private
+mkdir ${HOME}/cloud_mounts/yandex_official
