@@ -1,5 +1,7 @@
 #!/bin/bash
 
+minikube config set driver kvm2
+
 mkdir -P ${HOME}/Soft
 
 tee -a ${HOME}/.config/appimagelauncher.cfg << 'EOF'
@@ -26,10 +28,24 @@ echo N | sdk install java 11.0.12-open ${HOME}/Soft/java11
 echo N | sdk install java 8.0.302-open ${HOME}/Soft/java8
 
 sdk install maven 3.8.5 ${HOME}/Soft/maven
-
 sdk install gradle 7.4.2 ${HOME}/Soft/gradle
-
 sdk install groovy 4.0.1 ${HOME}/Soft/groovy
+
+tee -a ${HOME}/.sdkman/etc/config << 'EOF'
+sdkman_auto_answer=true
+sdkman_auto_complete=true
+sdkman_auto_env=false
+sdkman_auto_update=true
+sdkman_beta_channel=false
+sdkman_checksum_enable=true
+sdkman_colour_enable=true
+sdkman_curl_connect_timeout=7
+sdkman_curl_max_time=10
+sdkman_debug_mode=false
+sdkman_insecure_ssl=false
+sdkman_rosetta2_compatible=false
+sdkman_selfupdate_feature=true
+EOF
 
 #AWS CLI
 curl -s "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
@@ -39,10 +55,11 @@ rm awscliv2.zip
 rm -rf aws
 
 #JetBrains
-wget https://download.jetbrains.com/toolbox/jetbrains-toolbox-1.23.11680.tar.gz 
-tar -xf jetbrains-toolbox-1.23.11680.tar.gz -C ${HOME}/Soft
-mv ${HOME}/Soft/jetbrains-toolbox-1.23.11680 ${HOME}/Soft/jetbrains-toolbox
-rm -f jetbrains-toolbox-1.23.11680.tar.gz
+toolbox_version="1.27.2.13801"
+wget https://download-cdn.jetbrains.com/toolbox/jetbrains-toolbox-${toolbox_version}.tar.gz
+tar -xf jetbrains-toolbox-${toolbox_version}.tar.gz -C ${HOME}/Soft
+mv ${HOME}/Soft/jetbrains-toolbox-${toolbox_version} ${HOME}/Soft/jetbrains-toolbox
+rm -f jetbrains-toolbox-${toolbox_version}.tar.gz
 
 cp ./.vimrc ${HOME}/.vimrc
 mkdir -p ${HOME}/.bashrc.d
@@ -65,7 +82,8 @@ wget https://github.com/stuarthayhurst/alphabetical-grid-extension/releases/down
 wget https://github.com/aunetx/blur-my-shell/releases/download/v28/blur-my-shell@aunetx.zip -O blur-my-shell.zip
 wget https://github.com/eonpatapon/gnome-shell-extension-caffeine/archive/refs/tags/v41.zip -O caffeine.zip
 wget https://github.com/home-sweet-gnome/dash-to-panel/releases/download/v46/dash-to-panel@jderose9.github.com_v46.zip -O dash-to-panel.zip
-wget https://github.com/kgshank/gse-sound-output-device-chooser/archive/refs/tags/39.zip -O sound-output-device-chooser.zip
+wget https://extensions.gnome.org/extension-data/nightthemeswitcherromainvigier.fr.v72.shell-extension.zip -O nightthemeswitcher.zip
+wget https://extensions.gnome.org/extension-data/openweather-extensionjenslody.de.v119.shell-extension.zip -O openweather.zip
 wget https://github.com/MartinPL/Tray-Icons-Reloaded/releases/download/23/trayIconsReloaded@selfmade.pl.zip -O tray-icons.zip
 wget https://github.com/G-dH/workspace-switcher-manager/releases/download/wsm-v3/workspace-switcher-manager@G-dH.github.com.zip -O workspace-switcher.zip
 for gef in ./*; do

@@ -1,4 +1,4 @@
-alias repos-update='sudo dnf check-update || true && sudo dnf update -y && flatpak update -y && sudo rclone selfupdate && pip install --upgrade system-monitoring-center'
+alias repos-update='sudo dnf check-update || true && sudo dnf update -y && flatpak update -y && sudo rclone selfupdate && sdk update'
 alias repos-clean='sudo dnf autoremove -y && flatpak uninstall --unused'
 alias la='ls -la'
 

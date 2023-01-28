@@ -50,7 +50,13 @@ dnf install -y \
 	evolution-ews \
 	gnome-tweaks \
 	blueman \
-	helm
+	helm \
+	distrobox \
+	timeshift \
+	barrier \
+	gparted \
+	dnfdragora \
+	dnfdragora-gui
 	
 #Python3
 dnf install -y \
@@ -139,6 +145,7 @@ flatpak install flathub -y \
 	com.dangeredwolf.ModernDeck \
 	com.github.johnfactotum.Foliate \
 	com.github.maoschanz.drawing \
+	com.github.PintaProject.Pinta \
 	com.github.tchx84.Flatseal \
 	com.google.Chrome \
 	com.mattjakeman.ExtensionManager \
@@ -149,11 +156,13 @@ flatpak install flathub -y \
 	com.viber.Viber \
 	fr.free.Homebank \
 	fr.romainvigier.MetadataCleaner \
+	io.github.hakandundar34coding.system-monitoring-center \
 	io.github.seadve.Kooha \
 	io.github.seadve.Mousai \
 	net.cozic.joplin_desktop \
 	net.lutris.Lutris \
 	org.audacityteam.Audacity \
+	org.bleachbit.BleachBit \
 	org.chromium.Chromium \
 	org.flameshot.Flameshot \
 	org.gimp.GIMP \
