@@ -1,5 +1,16 @@
-alias repos-update='sudo dnf check-update || true && sudo dnf update -y && flatpak update -y && sudo rclone selfupdate && sdk update'
-alias repos-clean='sudo dnf autoremove -y && flatpak uninstall --unused'
+alias repos-update='
+sudo dnf check-update || true
+sudo dnf update -y
+flatpak update -y
+sudo rclone selfupdate
+sdk update
+wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/bin/yq
+chmod +x /usr/bin/yq'
+
+alias repos-clean='
+sudo dnf autoremove -y
+flatpak uninstall --unused'
+
 alias la='ls -la'
 
 alias fli='flatpak install'

@@ -38,6 +38,7 @@ dnf install -y \
 	dnf-plugins-core \
 	dnfdragora \
 	dnfdragora-gui \
+	duf \
 	edk2-tools \
 	evolution \
 	evolution-ews \
@@ -142,6 +143,9 @@ rm -f appimagelauncher.rpm
 wget https://github.com/apptainer/apptainer/releases/download/v1.0.1/apptainer-1.0.1-1.x86_64.rpm
 rpm -Uvh apptainer-1.0.1-1.x86_64.rpm
 rm -f apptainer-1.0.1-1.x86_64.rpm
+
+wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/bin/yq
+chmod +x /usr/bin/yq
 
 rpm -v --import https://download.sublimetext.com/sublimehq-rpm-pub.gpg
 dnf config-manager --add-repo https://download.sublimetext.com/rpm/stable/x86_64/sublime-text.repo
