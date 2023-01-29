@@ -20,3 +20,7 @@ alias fls='flatpak search'
 alias dnfi='sudo dnf install'
 alias dnfli='dnf list --installed'
 alias dnfs='dnf search'
+
+alias usejava8='sdk use java 8.0.302-open'
+alias usejava11='sdk use java 11.0.12-open'
+alias usejava17='sdk use java 17.0.2-open'

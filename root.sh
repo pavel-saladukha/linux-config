@@ -30,6 +30,7 @@ dnf autoremove -y
 
 #DNF
 dnf install -y \
+	autojump \
 	barrier \
 	bash \
 	blueman \
@@ -40,6 +41,7 @@ dnf install -y \
 	dnfdragora-gui \
 	duf \
 	edk2-tools \
+	efibootmgr \
 	evolution \
 	evolution-ews \
 	fuse-sshfs \
@@ -144,8 +146,14 @@ wget https://github.com/apptainer/apptainer/releases/download/v1.0.1/apptainer-1
 rpm -Uvh apptainer-1.0.1-1.x86_64.rpm
 rm -f apptainer-1.0.1-1.x86_64.rpm
 
-wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/bin/yq
-chmod +x /usr/bin/yq
+wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/local/bin/yq
+chmod +x /usr/local/bin/yq
+
+wget https://github.com/gohugoio/hugo/releases/latest/download/hugo_extended_0.110.0_Linux-64bit.tar.gz
+tar -xf hugo_extended_0.110.0_Linux-64bit.tar.gz
+rm -rf hugo_extended_0.110.0_Linux-64bit.tar.gz
+mv hugo /usr/local/bin
+chmod +x /usr/local/bin/hugo
 
 rpm -v --import https://download.sublimetext.com/sublimehq-rpm-pub.gpg
 dnf config-manager --add-repo https://download.sublimetext.com/rpm/stable/x86_64/sublime-text.repo
