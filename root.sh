@@ -30,34 +30,34 @@ dnf autoremove -y
 
 #DNF
 dnf install -y \
-	vim-enhanced \
-	inxi \
-	htop \
-	unzip \
-	redhat-lsb \
-	neofetch \
-	stress \
-	stacer \
-	sysprof \
-	lm_sensors \
-	xsensors \
-	thinkfan \
-	kitty \
+	barrier \
+	blueman \
+	distrobox \
 	dnf-plugins-core \
-	rclone \
-	rclone-browser \
+	dnfdragora \
+	dnfdragora-gui \
 	evolution \
 	evolution-ews \
 	gnome-tweaks \
-	blueman \
-	helm \
-	distrobox \
-	timeshift \
-	barrier \
 	gparted \
-	dnfdragora \
-	dnfdragora-gui
-	
+	helm \
+	htop \
+	inxi \
+	kitty \
+	lm_sensors \
+	neofetch \
+	rclone \
+	rclone-browser \
+	redhat-lsb \
+	stacer \
+	stress \
+	sysprof \
+	thinkfan \
+	timeshift \
+	unzip \
+	vim-enhanced \
+	xsensors
+
 #Python3
 dnf install -y \
 	python3-virtualenv \
@@ -151,6 +151,7 @@ flatpak install flathub -y \
 	com.mattjakeman.ExtensionManager \
 	com.rafaelmardojai.Blanket \
 	com.skype.Client \
+	com.uploadedlobster.peek \
 	com.usebottles.bottles \
 	com.valvesoftware.Steam \
 	com.viber.Viber \
