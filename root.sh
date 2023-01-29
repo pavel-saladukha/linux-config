@@ -31,35 +31,53 @@ dnf autoremove -y
 #DNF
 dnf install -y \
 	barrier \
+	bash \
 	blueman \
+	coreutils \
 	distrobox \
 	dnf-plugins-core \
 	dnfdragora \
 	dnfdragora-gui \
+	edk2-tools \
 	evolution \
 	evolution-ews \
+	fuse-sshfs \
+	genisoimage \
 	gnome-tweaks \
 	gparted \
+	grep \
 	helm \
 	htop \
 	inxi \
+	jq \
 	kitty \
 	lm_sensors \
 	neofetch \
+	procps \
 	rclone \
 	rclone-browser \
 	redhat-lsb \
+	screenkey \
+	sed \
+	spice-gtk-tools \
 	stacer \
 	stress \
+	swtpm \
 	sysprof \
 	thinkfan \
 	timeshift \
 	unzip \
+	usbutils \
+	util-linux \
 	vim-enhanced \
+	wget \
+	xdg-user-dirs \
+	xrandr \
 	xsensors
 
 #Python3
 dnf install -y \
+	python3 \
 	python3-virtualenv \
 	python3-pip
 
