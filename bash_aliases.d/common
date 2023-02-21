@@ -24,3 +24,8 @@ alias dnfs='dnf search'
 alias usejava8='sdk use java 8.0.302-open'
 alias usejava11='sdk use java 11.0.12-open'
 alias usejava17='sdk use java 17.0.2-open'
+
+alias backup-evolution='
+evolution-backup --backup /home/pavel/evolution-$(date --iso-8601=minutes).tar.gz
+# rclone move /home/pavel/evolution-$(date --iso-8601=minutes).tar.gz
+'

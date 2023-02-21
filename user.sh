@@ -14,7 +14,7 @@ wget https://github.com/balena-io/etcher/releases/download/v1.14.3/balenaEtcher-
 wget https://github.com/bitwarden/clients/releases/download/desktop-v2023.1.1/Bitwarden-2023.1.1-x86_64.AppImage -O ${HOME}/Soft/bitwarden.AppImage
 wget https://github.com/TheTumultuousUnicornOfDarkness/CPU-X/releases/download/v4.5.2/CPU-X-v4.5.2-x86_64.AppImage -O ${HOME}/Soft/CPU-X.AppImage
 
-mkdir -p ${HOME}/Soft/{java17,java11,java8,maven,gradle,groovy}
+mkdir -p ${HOME}/Soft
 
 #Ansible
 python -m pip install --user ansible
@@ -23,9 +23,9 @@ python -m pip install --user ansible
 curl -s "https://get.sdkman.io" | bash 
 source "${HOME}/.sdkman/bin/sdkman-init.sh"
 
-sdk install java 17.0.2-open ${HOME}/Soft/java17
-echo N | sdk install java 11.0.12-open ${HOME}/Soft/java11
-echo N | sdk install java 8.0.302-open ${HOME}/Soft/java8
+sdk install java 17.0.2-open
+echo N | sdk install java 11.0.12-open
+echo N | sdk install java 8.0.302-open
 
 sdk install maven 3.8.5 ${HOME}/Soft/maven
 sdk install gradle 7.4.2 ${HOME}/Soft/gradle
@@ -53,6 +53,9 @@ unzip awscliv2.zip
 sudo ./aws/install
 rm awscliv2.zip
 rm -rf aws
+
+#NVM
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 
 #JetBrains
 toolbox_version="1.27.2.13801"
@@ -86,6 +89,7 @@ wget https://extensions.gnome.org/extension-data/nightthemeswitcherromainvigier.
 wget https://extensions.gnome.org/extension-data/openweather-extensionjenslody.de.v119.shell-extension.zip -O openweather.zip
 wget https://github.com/MartinPL/Tray-Icons-Reloaded/releases/download/23/trayIconsReloaded@selfmade.pl.zip -O tray-icons.zip
 wget https://github.com/G-dH/workspace-switcher-manager/releases/download/wsm-v3/workspace-switcher-manager@G-dH.github.com.zip -O workspace-switcher.zip
+wget https://extensions.gnome.org/extension-data/color-pickertuberry.v34.shell-extension.zip -O color-picker.zip
 for gef in ./*; do
 	gnome-extensions install "${gef}" -f || true
 done

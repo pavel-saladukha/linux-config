@@ -53,6 +53,7 @@ dnf install -y \
 	htop \
 	inxi \
 	jq \
+	joystick-support \
 	kitty \
 	lm_sensors \
 	neofetch \
@@ -76,13 +77,18 @@ dnf install -y \
 	wget \
 	xdg-user-dirs \
 	xrandr \
-	xsensors
+	xsensors \
+	dkms make bluez bluez-tools kernel-devel-`uname -r` kernel-headers
 
 #Python3
 dnf install -y \
 	python3 \
 	python3-virtualenv \
 	python3-pip
+
+#Nvidia
+dnf install akmod-nvidia -y
+dnf install xorg-x11-drv-nvidia-cuda -y
 
 #Codecs
 dnf install -y \
@@ -120,7 +126,7 @@ repo_gpgcheck=1
 gpgkey=https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg
 metadata_expire=1h
 EOF
-dnf install codium codium-insiders -y
+dnf install codium -y
 
 tee -a /etc/yum.repos.d/kubernetes.repo << 'EOF'
 [kubernetes]
@@ -155,6 +161,9 @@ rm -rf hugo_extended_0.110.0_Linux-64bit.tar.gz
 mv hugo /usr/local/bin
 chmod +x /usr/local/bin/hugo
 
+#for evolution backup
+ln -s /usr/libexec/evolution/evolution-backup /usr/local/bin/evolution-backup
+
 rpm -v --import https://download.sublimetext.com/sublimehq-rpm-pub.gpg
 dnf config-manager --add-repo https://download.sublimetext.com/rpm/stable/x86_64/sublime-text.repo
 dnf install -y \
@@ -165,12 +174,17 @@ dnf check-update
 dnf upgrade -y
 dnf autoremove -y
 
+#Gamepad support
+git clone https://github.com/paroj/xpad.git /usr/src/xpad-0.4
+dkms install -m xpad -v 0.4 --force
+
 #FLATPAK
 flatpak update -y
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak update -y
 
 flatpak install flathub -y \
+	ca.desrt.dconf-editor \
 	com.calibre_ebook.calibre \
 	com.dangeredwolf.ModernDeck \
 	com.github.johnfactotum.Foliate \
@@ -184,7 +198,6 @@ flatpak install flathub -y \
 	com.uploadedlobster.peek \
 	com.usebottles.bottles \
 	com.valvesoftware.Steam \
-	com.viber.Viber \
 	fr.free.Homebank \
 	fr.romainvigier.MetadataCleaner \
 	io.github.hakandundar34coding.system-monitoring-center \
