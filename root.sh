@@ -34,8 +34,11 @@ dnf install -y \
 	barrier \
 	bash \
 	blueman \
+	bluez \
+	bluez-tools \
 	coreutils \
 	distrobox \
+	dkms \
 	dnf-plugins-core \
 	dnfdragora \
 	dnfdragora-gui \
@@ -52,10 +55,13 @@ dnf install -y \
 	helm \
 	htop \
 	inxi \
-	jq \
 	joystick-support \
+	jq \
+	kernel-devel-`uname -r` \
+	kernel-headers \
 	kitty \
 	lm_sensors \
+	make \
 	neofetch \
 	procps \
 	rclone \
@@ -69,7 +75,6 @@ dnf install -y \
 	swtpm \
 	sysprof \
 	thinkfan \
-	timeshift \
 	unzip \
 	usbutils \
 	util-linux \
@@ -77,8 +82,7 @@ dnf install -y \
 	wget \
 	xdg-user-dirs \
 	xrandr \
-	xsensors \
-	dkms make bluez bluez-tools kernel-devel-`uname -r` kernel-headers
+	xsensors
 
 #Python3
 dnf install -y \
@@ -148,18 +152,8 @@ wget https://github.com/TheAssassin/AppImageLauncher/releases/download/v2.2.0/ap
 rpm -Uvh appimagelauncher.rpm
 rm -f appimagelauncher.rpm
 
-wget https://github.com/apptainer/apptainer/releases/download/v1.0.1/apptainer-1.0.1-1.x86_64.rpm
-rpm -Uvh apptainer-1.0.1-1.x86_64.rpm
-rm -f apptainer-1.0.1-1.x86_64.rpm
-
 wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/local/bin/yq
 chmod +x /usr/local/bin/yq
-
-wget https://github.com/gohugoio/hugo/releases/latest/download/hugo_extended_0.110.0_Linux-64bit.tar.gz
-tar -xf hugo_extended_0.110.0_Linux-64bit.tar.gz
-rm -rf hugo_extended_0.110.0_Linux-64bit.tar.gz
-mv hugo /usr/local/bin
-chmod +x /usr/local/bin/hugo
 
 #for evolution backup
 ln -s /usr/libexec/evolution/evolution-backup /usr/local/bin/evolution-backup
@@ -186,23 +180,23 @@ flatpak update -y
 flatpak install flathub -y \
 	ca.desrt.dconf-editor \
 	com.calibre_ebook.calibre \
-	com.dangeredwolf.ModernDeck \
-	com.github.johnfactotum.Foliate \
+	com.discordapp.Discord \
 	com.github.maoschanz.drawing \
 	com.github.PintaProject.Pinta \
 	com.github.tchx84.Flatseal \
 	com.google.Chrome \
+	com.heroicgameslauncher.hgl \
 	com.mattjakeman.ExtensionManager \
 	com.rafaelmardojai.Blanket \
 	com.skype.Client \
 	com.uploadedlobster.peek \
-	com.usebottles.bottles \
 	com.valvesoftware.Steam \
-	fr.free.Homebank \
 	fr.romainvigier.MetadataCleaner \
 	io.github.hakandundar34coding.system-monitoring-center \
 	io.github.seadve.Kooha \
 	io.github.seadve.Mousai \
+	io.gitlab.gregorni.ASCIIImages \
+	io.gitlab.gregorni.Calligraphy \
 	net.cozic.joplin_desktop \
 	net.lutris.Lutris \
 	org.audacityteam.Audacity \
@@ -210,19 +204,15 @@ flatpak install flathub -y \
 	org.chromium.Chromium \
 	org.flameshot.Flameshot \
 	org.gimp.GIMP \
-	org.gnome.Boxes \
 	org.gnome.DejaDup \
 	org.gnome.Extensions \
 	org.gnome.PowerStats \
 	org.gramps_project.Gramps \
 	org.gustavoperedo.FontDownloader \
-	org.kde.tokodon \
 	org.libreoffice.LibreOffice \
 	org.linux_hardware.hw-probe \
-	org.nickvision.money \
 	org.qbittorrent.qBittorrent \
 	org.telegram.desktop \
-	org.videolan.VLC \
-	re.sonny.Tangram
+	org.videolan.VLC
 
 flatpak update -y
