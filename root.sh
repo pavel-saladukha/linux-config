@@ -30,8 +30,6 @@ dnf autoremove -y
 
 #DNF
 dnf install -y \
-	autojump \
-	barrier \
 	bash \
 	blueman \
 	bluez \
@@ -40,8 +38,6 @@ dnf install -y \
 	distrobox \
 	dkms \
 	dnf-plugins-core \
-	dnfdragora \
-	dnfdragora-gui \
 	duf \
 	edk2-tools \
 	efibootmgr \
@@ -59,7 +55,6 @@ dnf install -y \
 	jq \
 	kernel-devel-`uname -r` \
 	kernel-headers \
-	kitty \
 	lm_sensors \
 	make \
 	neofetch \
@@ -102,8 +97,10 @@ dnf install -y \
 	lame\* \
 	--exclude=gstreamer1-plugins-bad-free-devel \
 	--exclude=lame-devel
-dnf group upgrade --with-optional -y \
-	Multimedia
+dnf install intel-media-driver -y
+dnf install nvidia-vaapi-driver -y
+dnf group upgrade --with-optional --allowerasing -y \
+	multimedia
 
 #Virtualization
 dnf group install --with-optional -y \
@@ -111,8 +108,8 @@ dnf group install --with-optional -y \
 	vagrant 
 
 usermod -aG libvirt ${SUDO_USER}
-service libvirtd.service enable
-service libvirtd.service start
+systemctl enable libvirtd.service
+systemctl start libvirtd.service
 
 #Terraform
 dnf config-manager --add-repo https://rpm.releases.hashicorp.com/fedora/hashicorp.repo
@@ -178,7 +175,6 @@ flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flat
 flatpak update -y
 
 flatpak install flathub -y \
-	ca.desrt.dconf-editor \
 	com.calibre_ebook.calibre \
 	com.discordapp.Discord \
 	com.github.maoschanz.drawing \
@@ -191,18 +187,13 @@ flatpak install flathub -y \
 	com.skype.Client \
 	com.uploadedlobster.peek \
 	com.valvesoftware.Steam \
-	fr.romainvigier.MetadataCleaner \
-	io.github.hakandundar34coding.system-monitoring-center \
 	io.github.seadve.Kooha \
 	io.github.seadve.Mousai \
 	io.gitlab.gregorni.ASCIIImages \
 	io.gitlab.gregorni.Calligraphy \
 	net.cozic.joplin_desktop \
 	net.lutris.Lutris \
-	org.audacityteam.Audacity \
-	org.bleachbit.BleachBit \
 	org.chromium.Chromium \
-	org.flameshot.Flameshot \
 	org.gimp.GIMP \
 	org.gnome.DejaDup \
 	org.gnome.Extensions \
