@@ -72,16 +72,11 @@ git config --global core.editor "subl -n -w"
 #install extensions
 mkdir -p $(pwd)/ge
 cd ge
-wget https://extensions.gnome.org/extension-data/AlphabeticalAppGridstuarthayhurst.v31.shell-extension.zip -O alphabetical-grid.zip
-wget https://extensions.gnome.org/extension-data/blur-my-shellaunetx.v47.shell-extension.zip -O blur-my-shell.zip
-wget https://extensions.gnome.org/extension-data/caffeinepatapon.info.v48.shell-extension.zip -O caffeine.zip
-wget https://extensions.gnome.org/extension-data/color-pickertuberry.v36.shell-extension.zip -O color-picker.zip
-wget https://extensions.gnome.org/extension-data/dash-to-paneljderose9.github.com.v56.shell-extension.zip -O dash-to-panel.zip
-wget https://extensions.gnome.org/extension-data/nightthemeswitcherromainvigier.fr.v74.shell-extension.zip -O nightthemeswitcher.zip
-wget https://extensions.gnome.org/extension-data/openweather-extensionjenslody.de.v121.shell-extension.zip -O openweather.zip
-wget https://extensions.gnome.org/extension-data/PrivacyMenustuarthayhurst.v14.shell-extension.zip -O privacy-menu.zip
-wget https://extensions.gnome.org/extension-data/trayIconsReloadedselfmade.pl.v27.shell-extension.zip -O tray-icons.zip
-# wget https://github.com/G-dH/workspace-switcher-manager/releases/download/wsm-v3/workspace-switcher-manager@G-dH.github.com.zip -O workspace-switcher.zip
+wget https://extensions.gnome.org/extension-data/AlphabeticalAppGridstuarthayhurst.v35.shell-extension.zip -O alphabetical-grid.zip
+wget https://extensions.gnome.org/extension-data/blur-my-shellaunetx.v54.shell-extension.zip -O blur-my-shell.zip
+wget https://extensions.gnome.org/extension-data/nightthemeswitcherromainvigier.fr.v75.shell-extension.zip -O nightthemeswitcher.zip
+wget https://extensions.gnome.org/extension-data/PrivacyMenustuarthayhurst.v21.shell-extension.zip -O privacy-menu.zip
+wget https://extensions.gnome.org/extension-data/trayIconsReloadedselfmade.pl.v29.shell-extension.zip -O tray-icons.zip
 wget https://extensions.gnome.org/extension-data/appindicatorsupportrgcjonas.gmail.com.v47.shell-extension.zip -O app-indicator.zip
 for gef in ./*; do
 	gnome-extensions install "${gef}" -f || true
@@ -91,10 +86,6 @@ rm -rf ge
 
 gnome-extensions enable AlphabeticalAppGrid@stuarthayhurst
 gnome-extensions enable blur-my-shell@aunetx
-gnome-extensions enable caffeine@patapon.info
-gnome-extensions enable color-picker@tuberry
-gnome-extensions enable dash-to-panel@jderose9.github.com
-gnome-extensions enable openweather-extension@jenslody.de
 gnome-extensions enable PrivacyMenu@stuarthayhurst
 gnome-extensions enable trayIconsReloaded@selfmade.pl
 gnome-extensions enable nightthemeswitcher@romainvigier.fr
