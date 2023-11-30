@@ -165,10 +165,6 @@ dnf check-update
 dnf upgrade -y
 dnf autoremove -y
 
-#Gamepad support
-git clone https://github.com/paroj/xpad.git /usr/src/xpad-0.4
-dkms install -m xpad -v 0.4 --force
-
 #FLATPAK
 flatpak update -y
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
@@ -181,27 +177,15 @@ flatpak install flathub -y \
 	com.github.PintaProject.Pinta \
 	com.github.tchx84.Flatseal \
 	com.google.Chrome \
-	com.heroicgameslauncher.hgl \
 	com.mattjakeman.ExtensionManager \
 	com.rafaelmardojai.Blanket \
 	com.skype.Client \
-	com.uploadedlobster.peek \
 	com.valvesoftware.Steam \
-	io.github.seadve.Kooha \
-	io.github.seadve.Mousai \
-	io.gitlab.gregorni.ASCIIImages \
-	io.gitlab.gregorni.Calligraphy \
 	net.cozic.joplin_desktop \
-	net.lutris.Lutris \
 	org.chromium.Chromium \
-	org.gimp.GIMP \
-	org.gnome.DejaDup \
 	org.gnome.Extensions \
 	org.gnome.PowerStats \
-	org.gramps_project.Gramps \
-	org.gustavoperedo.FontDownloader \
 	org.libreoffice.LibreOffice \
-	org.linux_hardware.hw-probe \
 	org.qbittorrent.qBittorrent \
 	org.telegram.desktop \
 	org.videolan.VLC
