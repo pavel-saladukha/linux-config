@@ -72,12 +72,12 @@ git config --global core.editor "subl -n -w"
 #install extensions
 mkdir -p $(pwd)/ge
 cd ge
-wget https://extensions.gnome.org/extension-data/AlphabeticalAppGridstuarthayhurst.v35.shell-extension.zip -O alphabetical-grid.zip
+wget https://extensions.gnome.org/extension-data/AlphabeticalAppGridstuarthayhurst.v36.shell-extension.zip -O alphabetical-grid.zip
 wget https://extensions.gnome.org/extension-data/blur-my-shellaunetx.v54.shell-extension.zip -O blur-my-shell.zip
 wget https://extensions.gnome.org/extension-data/nightthemeswitcherromainvigier.fr.v75.shell-extension.zip -O nightthemeswitcher.zip
-wget https://extensions.gnome.org/extension-data/PrivacyMenustuarthayhurst.v21.shell-extension.zip -O privacy-menu.zip
+wget https://extensions.gnome.org/extension-data/PrivacyMenustuarthayhurst.v22.shell-extension.zip -O privacy-menu.zip
 wget https://extensions.gnome.org/extension-data/trayIconsReloadedselfmade.pl.v29.shell-extension.zip -O tray-icons.zip
-wget https://extensions.gnome.org/extension-data/appindicatorsupportrgcjonas.gmail.com.v47.shell-extension.zip -O app-indicator.zip
+wget https://extensions.gnome.org/extension-data/appindicatorsupportrgcjonas.gmail.com.v57.shell-extension.zip -O app-indicator.zip
 for gef in ./*; do
 	gnome-extensions install "${gef}" -f || true
 done
