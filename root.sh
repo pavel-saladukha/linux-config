@@ -51,7 +51,6 @@ dnf install -y \
 	helm \
 	htop \
 	inxi \
-	joystick-support \
 	jq \
 	kernel-devel-`uname -r` \
 	kernel-headers \
@@ -65,7 +64,6 @@ dnf install -y \
 	screenkey \
 	sed \
 	spice-gtk-tools \
-	stacer \
 	stress \
 	swtpm \
 	sysprof \
@@ -180,7 +178,6 @@ flatpak install flathub -y \
 	com.mattjakeman.ExtensionManager \
 	com.rafaelmardojai.Blanket \
 	com.skype.Client \
-	com.valvesoftware.Steam \
 	net.cozic.joplin_desktop \
 	org.chromium.Chromium \
 	org.gnome.Extensions \
