@@ -34,6 +34,7 @@ dnf install -y \
 	blueman \
 	bluez \
 	bluez-tools \
+	btop \
 	coreutils \
 	distrobox \
 	dkms \
@@ -92,11 +93,11 @@ dnf install -y \
 	gstreamer1-plugins-{bad-\*,good-\*,base} \
 	gstreamer1-plugin-openh264 \
 	gstreamer1-libav \
+	intel-media-driver \
 	lame\* \
 	--exclude=gstreamer1-plugins-bad-free-devel \
-	--exclude=lame-devel
-dnf install intel-media-driver -y
-dnf install nvidia-vaapi-driver -y
+	--exclude=lame-devel \
+    nvidia-vaapi-driver
 dnf group upgrade --with-optional --allowerasing -y \
 	multimedia
 
@@ -127,27 +128,25 @@ metadata_expire=1h
 EOF
 dnf install codium -y
 
-tee -a /etc/yum.repos.d/kubernetes.repo << 'EOF'
-[kubernetes]
-name=Kubernetes
-baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
-enabled=1
-gpgcheck=1
-repo_gpgcheck=1
-gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
-EOF
-dnf install -y \
-	kubectl
+#AWS CLI
+curl -s "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+./aws/install
+rm awscliv2.zip
+rm -rf aws
 
-curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-latest.x86_64.rpm
+curl --output-dir /tmp -sLO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+install -o root -g root -m 0755 /tmp/kubectl /usr/local/bin/kubectl
+
+curl -sLO https://storage.googleapis.com/minikube/releases/latest/minikube-latest.x86_64.rpm
 rpm -Uvh minikube-latest.x86_64.rpm
 rm -f minikube-latest.x86_64.rpm
 
-wget https://github.com/TheAssassin/AppImageLauncher/releases/download/v2.2.0/appimagelauncher-2.2.0-travis995.0f91801.x86_64.rpm -O appimagelauncher.rpm
+wget -q https://github.com/TheAssassin/AppImageLauncher/releases/download/v2.2.0/appimagelauncher-2.2.0-travis995.0f91801.x86_64.rpm -O appimagelauncher.rpm
 rpm -Uvh appimagelauncher.rpm
 rm -f appimagelauncher.rpm
 
-wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/local/bin/yq
+wget -q https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/local/bin/yq
 chmod +x /usr/local/bin/yq
 
 #for evolution backup

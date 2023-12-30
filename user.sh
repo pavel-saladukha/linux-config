@@ -10,10 +10,10 @@ destination = ~/Soft
 enable_daemon = true
 EOF
 
-wget https://github.com/balena-io/etcher/releases/download/v1.18.8/balenaEtcher-1.18.8-x64.AppImage -O ${HOME}/Soft/balenaEtcher.AppImage
-wget https://github.com/bitwarden/clients/releases/download/desktop-v2023.5.1/Bitwarden-2023.5.1-x86_64.AppImage -O ${HOME}/Soft/bitwarden.AppImage
-wget https://github.com/TheTumultuousUnicornOfDarkness/CPU-X/releases/download/v4.5.3/CPU-X-4.5.3-x86_64.AppImage -O ${HOME}/Soft/CPU-X.AppImage
-wget https://github.com/MuhammedKalkan/OpenLens/releases/download/v6.5.2-366/OpenLens-6.5.2-366.x86_64.AppImage -O ${HOME}/Soft/OpenLens.AppImage
+wget -q https://github.com/balena-io/etcher/releases/download/v1.18.8/balenaEtcher-1.18.8-x64.AppImage -O ${HOME}/Soft/balenaEtcher.AppImage
+wget -q https://github.com/bitwarden/clients/releases/download/desktop-v2023.5.1/Bitwarden-2023.5.1-x86_64.AppImage -O ${HOME}/Soft/bitwarden.AppImage
+wget -q https://github.com/TheTumultuousUnicornOfDarkness/CPU-X/releases/download/v4.5.3/CPU-X-4.5.3-x86_64.AppImage -O ${HOME}/Soft/CPU-X.AppImage
+wget -q https://github.com/MuhammedKalkan/OpenLens/releases/download/v6.5.2-366/OpenLens-6.5.2-366.x86_64.AppImage -O ${HOME}/Soft/OpenLens.AppImage
 
 #Ansible
 python -m pip install --user ansible
@@ -46,19 +46,12 @@ sdkman_rosetta2_compatible=false
 sdkman_selfupdate_feature=true
 EOF
 
-#AWS CLI
-curl -s "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-unzip awscliv2.zip
-sudo ./aws/install
-rm awscliv2.zip
-rm -rf aws
-
 #NVM
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+curl -so- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
 
 #JetBrains
-toolbox_version="1.28.1.15219"
-wget https://download-cdn.jetbrains.com/toolbox/jetbrains-toolbox-${toolbox_version}.tar.gz
+toolbox_version="2.1.3.18901"
+wget -q https://download-cdn.jetbrains.com/toolbox/jetbrains-toolbox-${toolbox_version}.tar.gz
 tar -xf jetbrains-toolbox-${toolbox_version}.tar.gz -C ${HOME}/Soft
 mv ${HOME}/Soft/jetbrains-toolbox-${toolbox_version} ${HOME}/Soft/jetbrains-toolbox
 rm -f jetbrains-toolbox-${toolbox_version}.tar.gz
@@ -72,24 +65,17 @@ git config --global core.editor "subl -n -w"
 #install extensions
 mkdir -p $(pwd)/ge
 cd ge
-wget https://extensions.gnome.org/extension-data/AlphabeticalAppGridstuarthayhurst.v36.shell-extension.zip -O alphabetical-grid.zip
-wget https://extensions.gnome.org/extension-data/blur-my-shellaunetx.v54.shell-extension.zip -O blur-my-shell.zip
-wget https://extensions.gnome.org/extension-data/nightthemeswitcherromainvigier.fr.v75.shell-extension.zip -O nightthemeswitcher.zip
-wget https://extensions.gnome.org/extension-data/PrivacyMenustuarthayhurst.v22.shell-extension.zip -O privacy-menu.zip
-wget https://extensions.gnome.org/extension-data/trayIconsReloadedselfmade.pl.v29.shell-extension.zip -O tray-icons.zip
-wget https://extensions.gnome.org/extension-data/appindicatorsupportrgcjonas.gmail.com.v57.shell-extension.zip -O app-indicator.zip
+wget -q https://extensions.gnome.org/extension-data/AlphabeticalAppGridstuarthayhurst.v36.shell-extension.zip -O alphabetical-grid.zip
+wget -q https://extensions.gnome.org/extension-data/blur-my-shellaunetx.v54.shell-extension.zip -O blur-my-shell.zip
+wget -q https://extensions.gnome.org/extension-data/nightthemeswitcherromainvigier.fr.v75.shell-extension.zip -O nightthemeswitcher.zip
+wget -q https://extensions.gnome.org/extension-data/PrivacyMenustuarthayhurst.v22.shell-extension.zip -O privacy-menu.zip
+wget -q https://extensions.gnome.org/extension-data/trayIconsReloadedselfmade.pl.v29.shell-extension.zip -O tray-icons.zip
+wget -q https://extensions.gnome.org/extension-data/appindicatorsupportrgcjonas.gmail.com.v57.shell-extension.zip -O app-indicator.zip
 for gef in ./*; do
 	gnome-extensions install "${gef}" -f || true
 done
 cd ../
 rm -rf ge
 
-gnome-extensions enable AlphabeticalAppGrid@stuarthayhurst
-gnome-extensions enable blur-my-shell@aunetx
-gnome-extensions enable PrivacyMenu@stuarthayhurst
-gnome-extensions enable trayIconsReloaded@selfmade.pl
-gnome-extensions enable nightthemeswitcher@romainvigier.fr
-gnome-extensions enable appindicatorsupport@rgcjonas.gmail.com
-
 #create folders to mount cloud storage
-mkdir -p ${HOME}/Soft/{dropbox_private, google_drive_private, onedrive_official, onedrive_private, yandex_official}
+mkdir -p ${HOME}/Soft/{dropbox_private,google_drive_private,onedrive_official,onedrive_private,yandex_official}

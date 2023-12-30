@@ -5,7 +5,9 @@ flatpak update -y
 sudo rclone selfupdate
 sdk update
 sudo wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/local/bin/yq
-sudo chmod +x /usr/local/bin/yq'
+sudo chmod +x /usr/local/bin/yq
+curl --output-dir /tmp -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+sudo install -o root -g root -m 0755 /tmp/kubectl /usr/local/bin/kubectl'
 
 alias repos-clean='sudo dnf autoremove -y && flatpak uninstall --unused'
 alias la='ls -la'
