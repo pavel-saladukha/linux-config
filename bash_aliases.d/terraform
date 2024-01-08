@@ -1,3 +1,4 @@
+alias tf='terraform'
 alias tfinit='terraform init'
 alias tffmt='terraform fmt'
 alias tfplan='terraform plan'

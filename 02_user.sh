@@ -14,6 +14,7 @@ wget -q https://github.com/balena-io/etcher/releases/download/v1.18.8/balenaEtch
 wget -q https://github.com/bitwarden/clients/releases/download/desktop-v2023.5.1/Bitwarden-2023.5.1-x86_64.AppImage -O ${HOME}/Soft/bitwarden.AppImage
 wget -q https://github.com/TheTumultuousUnicornOfDarkness/CPU-X/releases/download/v4.5.3/CPU-X-4.5.3-x86_64.AppImage -O ${HOME}/Soft/CPU-X.AppImage
 wget -q https://github.com/MuhammedKalkan/OpenLens/releases/download/v6.5.2-366/OpenLens-6.5.2-366.x86_64.AppImage -O ${HOME}/Soft/OpenLens.AppImage
+wget -q https://download.cdn.viber.com/desktop/Linux/viber.AppImage -O ${HOME}/Soft/Viber.AppImage
 
 #Ansible
 python -m pip install --user ansible
@@ -22,13 +23,13 @@ python -m pip install --user ansible
 curl -s "https://get.sdkman.io" | bash
 source "${HOME}/.sdkman/bin/sdkman-init.sh"
 
-sdk install java 17.0.2-open
-echo N | sdk install java 11.0.12-open
-echo N | sdk install java 8.0.302-open
+sdk install java 17.0.9-tem
+echo N | sdk install java 11.0.21-tem
+echo N | sdk install java 8.0.392-tem
 
-sdk install maven 3.9.3
-sdk install gradle 8.2
-sdk install groovy 4.0.13
+sdk install maven 3.9.6
+sdk install gradle 8.5
+sdk install groovy 4.0.17
 
 tee -a ${HOME}/.sdkman/etc/config << 'EOF'
 sdkman_auto_answer=true

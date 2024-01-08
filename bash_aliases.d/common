@@ -20,9 +20,11 @@ alias dnfi='sudo dnf install'
 alias dnfs='sudo dnf search'
 alias dnfli='sudo dnf list --installed'
 
-alias usejava8='sdk use java 8.0.302-open'
-alias usejava11='sdk use java 11.0.12-open'
-alias usejava17='sdk use java 17.0.2-open'
+alias usejava8='sdk use java 8.0.392-tem'
+alias usejava11='sdk use java 11.0.21-tem'
+alias usejava17='sdk use java 17.0.9-tem'
+
+alias sdkli='ls ~/.sdkman/candidates/* | grep -v "current"'
 
 alias backup-evolution='
 evolution-backup --backup /home/pavel/evolution-$(date --iso-8601=minutes).tar.gz
