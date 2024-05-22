@@ -19,7 +19,9 @@ dnf remove -y \
 	rhythmbox \
 	gnome-boxes \
 	gnome-contacts \
-	gnome-connections
+	gnome-connections \
+	evolution \
+	evolution-ews
 
 dnf autoremove -y
 
@@ -170,20 +172,24 @@ flatpak update -y
 flatpak install flathub -y \
 	com.calibre_ebook.calibre \
 	com.discordapp.Discord \
-	com.github.maoschanz.drawing \
 	com.github.PintaProject.Pinta \
+	com.github.maoschanz.drawing \
 	com.github.tchx84.Flatseal \
 	com.google.Chrome \
 	com.mattjakeman.ExtensionManager \
 	com.rafaelmardojai.Blanket \
 	com.skype.Client \
+	io.github.flattool.Warehouse \
+	io.github.thetumultuousunicornofdarkness.cpu-x \
 	net.cozic.joplin_desktop \
 	org.chromium.Chromium \
 	org.gnome.Extensions \
 	org.gnome.PowerStats \
 	org.libreoffice.LibreOffice \
+	org.mozilla.Thunderbird \
 	org.qbittorrent.qBittorrent \
 	org.telegram.desktop \
-	org.videolan.VLC
+	org.videolan.VLC \
+	us.zoom.Zoom
 
 flatpak update -y

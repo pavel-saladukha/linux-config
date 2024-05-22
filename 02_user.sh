@@ -10,10 +10,10 @@ destination = ~/Soft
 enable_daemon = true
 EOF
 
-wget -q https://github.com/balena-io/etcher/releases/download/v1.18.8/balenaEtcher-1.18.8-x64.AppImage -O ${HOME}/Soft/balenaEtcher.AppImage
-wget -q https://github.com/bitwarden/clients/releases/download/desktop-v2023.5.1/Bitwarden-2023.5.1-x86_64.AppImage -O ${HOME}/Soft/bitwarden.AppImage
-wget -q https://github.com/TheTumultuousUnicornOfDarkness/CPU-X/releases/download/v4.5.3/CPU-X-4.5.3-x86_64.AppImage -O ${HOME}/Soft/CPU-X.AppImage
-wget -q https://github.com/MuhammedKalkan/OpenLens/releases/download/v6.5.2-366/OpenLens-6.5.2-366.x86_64.AppImage -O ${HOME}/Soft/OpenLens.AppImage
+balena_etcher_version="1.19.17"
+bitwarden_version="2024.5.0"
+wget -q https://github.com/balena-io/etcher/releases/download/v${balena_etcher_version}/balenaEtcher-${balena_etcher_version}-x64.AppImage -O ${HOME}/Soft/balenaEtcher.AppImage
+wget -q https://github.com/bitwarden/clients/releases/download/desktop-v${bitwarden_version}/Bitwarden-${bitwarden_version}-x86_64.AppImage -O ${HOME}/Soft/bitwarden.AppImage
 wget -q https://download.cdn.viber.com/desktop/Linux/viber.AppImage -O ${HOME}/Soft/Viber.AppImage
 
 #Ansible
@@ -23,13 +23,13 @@ python -m pip install --user ansible
 curl -s "https://get.sdkman.io" | bash
 source "${HOME}/.sdkman/bin/sdkman-init.sh"
 
-sdk install java 17.0.9-tem
-echo N | sdk install java 11.0.21-tem
-echo N | sdk install java 8.0.392-tem
+sdk install java 17.0.11-tem
+echo N | sdk install java 11.0.23-tem
+echo N | sdk install java 8.0.412-tem
 
 sdk install maven 3.9.6
-sdk install gradle 8.5
-sdk install groovy 4.0.17
+sdk install gradle 8.7
+sdk install groovy 4.0.21
 
 tee -a ${HOME}/.sdkman/etc/config << 'EOF'
 sdkman_auto_answer=true
@@ -51,7 +51,7 @@ EOF
 curl -so- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
 
 #JetBrains
-toolbox_version="2.1.3.18901"
+toolbox_version="2.3.1.31116"
 wget -q https://download-cdn.jetbrains.com/toolbox/jetbrains-toolbox-${toolbox_version}.tar.gz
 tar -xf jetbrains-toolbox-${toolbox_version}.tar.gz -C ${HOME}/Soft
 mv ${HOME}/Soft/jetbrains-toolbox-${toolbox_version} ${HOME}/Soft/jetbrains-toolbox
@@ -66,12 +66,12 @@ git config --global core.editor "subl -n -w"
 #install extensions
 mkdir -p $(pwd)/ge
 cd ge
-wget -q https://extensions.gnome.org/extension-data/AlphabeticalAppGridstuarthayhurst.v36.shell-extension.zip -O alphabetical-grid.zip
-wget -q https://extensions.gnome.org/extension-data/blur-my-shellaunetx.v54.shell-extension.zip -O blur-my-shell.zip
-wget -q https://extensions.gnome.org/extension-data/nightthemeswitcherromainvigier.fr.v75.shell-extension.zip -O nightthemeswitcher.zip
-wget -q https://extensions.gnome.org/extension-data/PrivacyMenustuarthayhurst.v22.shell-extension.zip -O privacy-menu.zip
-wget -q https://extensions.gnome.org/extension-data/trayIconsReloadedselfmade.pl.v29.shell-extension.zip -O tray-icons.zip
-wget -q https://extensions.gnome.org/extension-data/appindicatorsupportrgcjonas.gmail.com.v57.shell-extension.zip -O app-indicator.zip
+wget -q https://extensions.gnome.org/extension-data/AlphabeticalAppGridstuarthayhurst.v40.shell-extension.zip -O alphabetical-grid.zip
+wget -q https://extensions.gnome.org/extension-data/blur-my-shellaunetx.v61.shell-extension.zip -O blur-my-shell.zip
+wget -q https://extensions.gnome.org/extension-data/nightthemeswitcherromainvigier.fr.v77.shell-extension.zip -O nightthemeswitcher.zip
+wget -q https://extensions.gnome.org/extension-data/PrivacyMenustuarthayhurst.v24.shell-extension.zip -O privacy-menu.zip
+wget -q https://extensions.gnome.org/extension-data/trayIconsReloadedselfmade.pl.v30.shell-extension.zip -O tray-icons.zip
+wget -q https://extensions.gnome.org/extension-data/appindicatorsupportrgcjonas.gmail.com.v58.shell-extension.zip -O app-indicator.zip
 for gef in ./*; do
 	gnome-extensions install "${gef}" -f || true
 done
