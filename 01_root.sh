@@ -21,7 +21,9 @@ dnf remove -y \
 	gnome-contacts \
 	gnome-connections \
 	evolution \
-	evolution-ews
+	evolution-ews \
+	evolution-ews-langpacks \
+	evolution-langpacks
 
 dnf autoremove -y
 
@@ -44,8 +46,6 @@ dnf install -y \
 	duf \
 	edk2-tools \
 	efibootmgr \
-	evolution \
-	evolution-ews \
 	fuse-sshfs \
 	genisoimage \
 	gnome-tweaks \
