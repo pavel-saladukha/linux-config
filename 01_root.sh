@@ -7,11 +7,12 @@ dnf install -y \
   https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
 dnf install -y \
   https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
-dnf group update core -y
 
 #Remove everything unused
 dnf remove @libreoffice -y
-dnf group remove libreoffice -y
+dnf group remove -y \
+	container-management \
+	libreoffice
 
 dnf remove -y \
 	libreoffice-* \
@@ -23,7 +24,18 @@ dnf remove -y \
 	evolution \
 	evolution-ews \
 	evolution-ews-langpacks \
-	evolution-langpacks
+	evolution-langpacks \
+	podman \
+	docker \
+	docker-client \
+	docker-client-latest \
+	docker-common \
+	docker-latest \
+	docker-latest-logrotate \
+	docker-logrotate \
+	docker-selinux \
+	docker-engine-selinux \
+	docker-engine
 
 dnf autoremove -y
 
@@ -31,6 +43,18 @@ dnf autoremove -y
 dnf check-update
 dnf upgrade -y
 dnf autoremove -y
+
+#Firewall
+dnf install -y \
+	ufw
+
+ufw disable
+ufw limit 22/tcp
+ufw allow 80/tcp
+ufw allow 443/tcp
+ufw default deny incoming
+ufw default allow outgoing
+ufw enable
 
 #DNF
 dnf install -y \
@@ -40,12 +64,12 @@ dnf install -y \
 	bluez-tools \
 	btop \
 	coreutils \
-	distrobox \
 	dkms \
 	dnf-plugins-core \
 	duf \
 	edk2-tools \
 	efibootmgr \
+	fastfetch \
 	fuse-sshfs \
 	genisoimage \
 	gnome-tweaks \
@@ -59,7 +83,6 @@ dnf install -y \
 	kernel-headers \
 	lm_sensors \
 	make \
-	neofetch \
 	procps \
 	rclone \
 	rclone-browser \
@@ -103,17 +126,36 @@ dnf install -y \
 dnf group upgrade --with-optional --allowerasing -y \
 	multimedia
 
+#Docker
+dnf config-manager addrepo --from-repofile=https://download.docker.com/linux/fedora/docker-ce.repo
+dnf install -y \
+	docker-ce \
+	docker-ce-cli \
+	containerd.io \
+	docker-buildx-plugin \
+	docker-compose-plugin
+
+groupadd docker
+usermod -aG docker ${SUDO_USER}
+systemctl enable docker.service --now
+systemctl start docker.service
+
 #Virtualization
+dnf install -y \
+	distrobox
 dnf group install --with-optional -y \
 	virtualization \
 	vagrant 
 
 usermod -aG libvirt ${SUDO_USER}
-systemctl enable libvirtd.service
+systemctl enable libvirtd.service --now
 systemctl start libvirtd.service
 
+#k3d
+wget -q -O - https://raw.githubusercontent.com/k3d-io/k3d/main/install.sh | bash
+
 #Terraform
-dnf config-manager --add-repo https://rpm.releases.hashicorp.com/fedora/hashicorp.repo
+dnf config-manager addrepo --from-repofile=https://rpm.releases.hashicorp.com/fedora/hashicorp.repo
 dnf install -y \
 	terraform
 
@@ -140,10 +182,6 @@ rm -rf aws
 curl --output-dir /tmp -sLO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
 install -o root -g root -m 0755 /tmp/kubectl /usr/local/bin/kubectl
 
-curl -sLO https://storage.googleapis.com/minikube/releases/latest/minikube-latest.x86_64.rpm
-rpm -Uvh minikube-latest.x86_64.rpm
-rm -f minikube-latest.x86_64.rpm
-
 wget -q https://github.com/TheAssassin/AppImageLauncher/releases/download/v2.2.0/appimagelauncher-2.2.0-travis995.0f91801.x86_64.rpm -O appimagelauncher.rpm
 rpm -Uvh appimagelauncher.rpm
 rm -f appimagelauncher.rpm
@@ -151,11 +189,8 @@ rm -f appimagelauncher.rpm
 wget -q https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/local/bin/yq
 chmod +x /usr/local/bin/yq
 
-#for evolution backup
-ln -s /usr/libexec/evolution/evolution-backup /usr/local/bin/evolution-backup
-
 rpm -v --import https://download.sublimetext.com/sublimehq-rpm-pub.gpg
-dnf config-manager --add-repo https://download.sublimetext.com/rpm/stable/x86_64/sublime-text.repo
+dnf config-manager addrepo --from-repofile=https://download.sublimetext.com/rpm/stable/x86_64/sublime-text.repo
 dnf install -y \
 	sublime-text \
 	sublime-merge
@@ -182,6 +217,7 @@ flatpak install flathub -y \
 	io.github.flattool.Warehouse \
 	io.github.thetumultuousunicornofdarkness.cpu-x \
 	net.cozic.joplin_desktop \
+	net.nokyan.Resources \
 	org.chromium.Chromium \
 	org.gnome.Extensions \
 	org.gnome.PowerStats \
